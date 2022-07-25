@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=1024, user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9" />
+		<meta name="theme-color" content="#000000" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/mainstyles.css" />
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+		<script type="text/javascript" src="js/settings.js"></script>
+		<script type="text/javascript" src="js/functions.js"></script>
+	</head>
+	<body>
+		<!--Loading-->
+		<div id="loading" style="display: true;" ontouchmove="BlockMove(event);">
+			Loading
+			<img src="gui/loading.gif" alt="loading" style="height: 100px; margin-bottom: 10px;" />
+		</div>
+		<!--Screen Blocker-->
+		<div id="blocker" title="Exit" ontouchmove="BlockMove(event);"></div>
+		<!--Main Content-->
+		<div name="MainContent" id="MainContent">
+			<div class="comicBookPages">
+				<div id="comicBookPageContainer">
+					<img name="ComicBookPage" id="ComicBookPage" src="pages/cover.jpg" alt="Comic book page" />
+				</div>
+			</div>
+			<div class="comicBookPages">
+				<div id="comicBookPage2Container">
+					<img name="ComicBookPage2" id="ComicBookPage2" src="pages/cover.jpg" alt="Comic book page" />
+				</div>
+			</div>
+		</div>
+		<!--Controller&Navigation-->
+		<div id="controller" class="controller" ontouchmove="BlockMove(event);">
+			<div id="controllerContainer">
+				<div style="float: left; display: flex;">
+					<div class="menu">
+						<a href="#" alt="Menu" title="Index of Pages"><img class="buttons" src="gui/menubtn.svg" alt="Show Index of" /></a>
+					</div>
+					<div class="settings">
+						<a href="#" alt="Settings" title="Settings"><img class="buttons" src="gui/settingsbtn.svg" alt="Settings" /></a>
+					</div>
+					<div id="zoomIn">
+						<div class="zoomIn">
+							<a href="#" alt="Zoom In" title="Zoom In"
+								><img class="buttons" src="gui/zoominbtn.svg" alt="Zoom In" style="margin: 0;"
+							/></a>
+						</div>
+					</div>
+					<div id="zoomOut">
+						<div class="zoomOut">
+							<a href="#" alt="Zoom Out" title="Zoom Out"
+								><img class="buttons" src="gui/zoomoutbtn.svg" alt="Zoom Out" style="margin: 0;"
+							/></a>
+						</div>
+					</div>
+				</div>
+				<div style="float: right; display: flex;">
+					<div id="pagecounter" class="pagecounter">Page 0 of 0</div>
+					<div class="first">
+						<a href="#" alt="First Page" title="First"><img class="buttons" src="gui/firstbtn.svg" alt="Go to First" /></a>
+					</div>
+					<div class="previous">
+						<a href="#" alt="Previous" title="Previous"><img class="buttons" src="gui/previousbtn.svg" alt="Previous Page" /></a>
+					</div>
+					<div class="next">
+						<a href="#" alt="Next" title="Next"><img class="buttons" src="gui/nextbtn.svg" alt="Next Page" /></a>
+					</div>
+					<div class="last">
+						<a href="#" alt="Last Page" title="Last"
+							><img class="buttons" src="gui/lastbtn.svg" alt="Go to Last Page" style="margin: 0;"
+						/></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="ProgramMenu" class="ProgramMenu" style="display: none;"></div>
+		<div id="previousbutton" class="previousbutton" style="display: true;">
+			<a href="javascript:PreviousPage();" alt="Previous Page" title="Previous"
+				><img src="gui/ControllerButton.png" width="100%" height="100%" alt="Previous Page"
+			/></a>
+		</div>
+		<div id="nextbutton" class="nextbutton" style="display: true;">
+			<a href="javascript:NextPage();" alt="Next Page" title="Next"
+				><img src="gui/ControllerButton.png" width="100%" height="100%" alt="Next Page"
+			/></a>
+		</div>
+		<!--Settings -->
+		<div style="display: flex; height: 100%; position: absolute; width: 100%;">
+			<div id="SettingsPop" style="display: none;" ontouchmove="BlockMove(event);">
+				<div id="settingsHeader" data-role="header">
+					<h1>Settings</h1>
+				</div>
+				<div style="padding: 40px;" data-role="content">
+					<div style="margin: 0;" data-role="fieldcontain">
+						<form>
+							<label for="flip-select">Theme:</label>
+							<select id="theme" id="flip-select" name="flip-select" data-role="flipswitch">
+								<option value="dark" selected="">Dark</option>
+								<option value="light">Light</option>
+							</select>
+						</form>
+						<div id="settingsHeader" data-role="header">
+							<h3 style="font-size: revert;">Auto Play</h3>
+						</div>
+						<form style="margin-bottom: 25px;">
+							<label style="margin-right: 15px; text-shadow: none;" for="slider">Auto Play Toggle: </label>
+							<input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="AutoPlayMode" id="flip-checkbox-1" />
+						</form>
+						<form>
+							<label style="margin-right: 15px; text-shadow: none;" for="slider">Auto Play Delay:</label>
+							<input
+								type="range"
+								title="Seconds"
+								name="slider-1"
+								data-highlight="true"
+								id="AutoPlayDelayAmount"
+								value="30"
+								min="1"
+								max="60"
+							/>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
